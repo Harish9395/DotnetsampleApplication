@@ -43,7 +43,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      docker login -u harish2195 -p ${DockerPassword}
+                      docker login -u harish2195 --password-stdin ${DockerPassword}
                       docker push harish2195/dockerwebapi:latest
   variables:
     - name: DockerPassword

@@ -43,5 +43,11 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      docker login -u harish2195 -p manu@2195
-                      docker push harish2195/dockerwebapi:1
+                      docker login -u harish2195 -p ${DockerPassword}
+                      docker push harish2195/dockerwebapi:latest
+  variables:
+    - name: DockerPassword
+      type: String
+      description: ""
+      required: false
+      value: manu@2195

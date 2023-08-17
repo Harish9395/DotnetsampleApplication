@@ -33,7 +33,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      docker build -t harish2195/dockerwebapi:1 -f Dockerfile .
+                      docker build -t harish2195/dockerwebapi:${BuildNumber} -f Dockerfile .
                       docker images
                       pwd
               - step:
@@ -44,5 +44,16 @@ pipeline:
                     shell: Sh
                     command: |-
                       #docker login --username ${secrets.getValue("Dockerusername")} --password ${secrets.getvalue("Dockerpassword")}
-                      docker login -u harish2195 -p manu@2195
+                      docker login -u harish2195 -p ${DOCKER_PASSWORD}
                       docker push harish2195/dockerwebapi:1
+        variables:
+          - name: BuildNumber
+            type: Number
+            description: ""
+            required: true
+            value: <+input>
+          - name: DOCKER_PASSWORD
+            type: Secret
+            description: ""
+            required: false
+            value: Dockerpassword

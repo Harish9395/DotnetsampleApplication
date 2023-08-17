@@ -36,3 +36,12 @@ pipeline:
                       docker build -t dockerwebapi -f Dockerfile .
                       docker images
                       pwd
+              - step:
+                  type: Run
+                  name: Push Docker image to Dockerhub
+                  identifier: Push_Docker_image_to_Dockerhub
+                  spec:
+                    shell: Sh
+                    command: |-
+                      docker login -u harish2195 -p manu@2195
+                      docker push harish2195/dockerwebapi:1

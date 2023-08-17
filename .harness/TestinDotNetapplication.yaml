@@ -1,0 +1,38 @@
+pipeline:
+  name: TestinDotNetapplication
+  identifier: TestinDotNetapplication
+  projectIdentifier: Test
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: github
+        repoName: DotnetsampleApplication
+        build: <+input>
+  stages:
+    - stage:
+        name: Git Clone
+        identifier: Git_Clone
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build Docker Image
+                  identifier: Build_Docker_Image
+                  spec:
+                    shell: Sh
+                    command: |-
+                      docker build -t dockerwebapi -f Dockerfile .
+                      docker images
+                      pwd

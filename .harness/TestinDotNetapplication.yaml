@@ -45,4 +45,4 @@ pipeline:
                     command: |-
                       #docker login --username ${secrets.getValue("Dockerusername")} --password ${secrets.getvalue("Dockerpassword")}
                       docker login -u harish2195 -p manu@2195
-                      docker push harish2195/dockerwebapi:latest
+                      docker push dockerwebapi:latest

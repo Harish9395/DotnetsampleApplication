@@ -44,5 +44,5 @@ pipeline:
                     shell: Sh
                     command: |-
                       #docker login --username ${secrets.getValue("Dockerusername")} --password ${secrets.getvalue("Dockerpassword")}
-                      docker login -u $Dockerusername -p $Dockerpassword
+                      docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
                       docker push harish2195/dockerwebapi:latest

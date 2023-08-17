@@ -45,7 +45,7 @@ pipeline:
                     command: |-
                       #docker login --username ${secrets.getValue("Dockerusername")} --password ${secrets.getvalue("Dockerpassword")}
                       docker login -u harish2195 -p ${DOCKER_PASSWORD}
-                      docker push harish2195/dockerwebapi:1
+                      docker push harish2195/dockerwebapi:${BuildNumber}
         variables:
           - name: BuildNumber
             type: Number

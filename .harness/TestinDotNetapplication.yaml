@@ -43,16 +43,5 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      docker login -username ${secrets.getValue("Dockerusername")} -p ${secrets.getvalue('Dockerpassword')}
+                      docker login -u ${secrets.getValue("Dockerusername")} -p ${secrets.getvalue('Dockerpassword')}
                       docker push harish2195/dockerwebapi:latest
-  variables:
-    - name: Dockerusername
-      type: Secret
-      description: ""
-      required: false
-      value: Dockerusername
-    - name: Dockerpassword
-      type: Secret
-      description: ""
-      required: false
-      value: Dockerpassword

@@ -47,7 +47,7 @@ pipeline:
                       docker push harish2195/dockerwebapi:${BuildNumber}
         variables:
           - name: BuildNumber
-            type: Number
+            type: String
             description: ""
             required: true
             value: <+input>

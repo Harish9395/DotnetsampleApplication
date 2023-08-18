@@ -1,0 +1,23 @@
+inputSet:
+  name: GitPublish
+  identifier: GitPublish
+  orgIdentifier: default
+  projectIdentifier: Test
+  pipeline:
+    identifier: TestinDotNetapplication
+    properties:
+      ci:
+        codebase:
+          build:
+            type: tag
+            spec:
+              tag: <+trigger.tag>
+    stages:
+      - stage:
+          identifier: Git_Clone
+          type: CI
+          variables:
+            - name: BuildNumber
+              type: Number
+              value: <+input>
+  object Object: pipeline.properties.ci.codebase

@@ -45,6 +45,13 @@ pipeline:
                       #docker login --username ${secrets.getValue("Dockerusername")} --password ${secrets.getvalue("Dockerpassword")}
                       docker login -u harish2195 -p ${DOCKER_PASSWORD}
                       docker push harish2195/dockerwebapi:${BuildNumber}
+              - step:
+                  type: Run
+                  name: Run_3
+                  identifier: Run_3
+                  spec:
+                    shell: Sh
+                    command: Kubectl apply -f dotnetwebapp.yml
         variables:
           - name: BuildNumber
             type: Number

@@ -73,18 +73,16 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: ShellScript
-                  name: ShellScript_1
-                  identifier: ShellScript_1
+                  type: K8sApply
+                  name: K8sApply_1
+                  identifier: K8sApply_1
                   spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
-                      spec:
-                        script: kubectl apply -f dotnetwebapp.yml
-                    environmentVariables: []
-                    outputVariables: []
+                    filePaths:
+                      - dotnetwebapp.yml
+                    skipDryRun: false
+                    skipSteadyStateCheck: false
+                    skipRendering: false
+                    overrides: []
                   timeout: 10m
             rollbackSteps:
               - step:

@@ -1,5 +1,6 @@
 inputSet:
   name: GitPublish
+  tags: {}
   identifier: GitPublish
   orgIdentifier: default
   projectIdentifier: Test
@@ -18,6 +19,9 @@ inputSet:
           type: CI
           variables:
             - name: BuildNumber
-              type: Number
-              value: <+input>
-  object Object: pipeline.properties.ci.codebase
+              type: String
+              value: latest
+  cacheResponse:
+    cacheState: VALID_CACHE
+    ttlLeft: 2591959876
+    lastUpdatedAt: 1692359619630

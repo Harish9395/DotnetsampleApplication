@@ -14,7 +14,6 @@ pipeline:
     - stage:
         name: Git Clone
         identifier: Git_Clone
-        description: ""
         type: CI
         spec:
           cloneCodebase: true

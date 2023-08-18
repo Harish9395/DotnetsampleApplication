@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Dotnetwebapp
+spec:
+  replicas: 2
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: Dotnetwebapp
+  template:
+    metadata:
+      name: Dotnetwebapppod
+      labels:
+        app: Dotnetwebapp
+    spec:
+      containers:
+        - name: Dotnetwebappcontainer
+          image: harish2195/dockerwebapi:3.0
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnetwebappsvc
+spec:
+  selector:
+    app: Dotnetwebapp
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 8080

@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Dotnetwebapp
+  name: dotnetwebapp
 spec:
   replicas: 2
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: Dotnetwebapp
+      app: dotnetwebapp
   template:
     metadata:
-      name: Dotnetwebapppod
+      name: dotnetwebapppod
       labels:
-        app: Dotnetwebapp
+        app: dotnetwebapp
     spec:
       containers:
-        - name: Dotnetwebappcontainer
+        - name: dotnetwebappcontainer
           image: harish2195/dockerwebapi:3.0
           ports:
             - containerPort: 8080
@@ -34,7 +34,7 @@ metadata:
   name: dotnetwebappsvc
 spec:
   selector:
-    app: Dotnetwebapp
+    app: dotnetwebapp
   type: NodePort
   ports:
   - port: 80

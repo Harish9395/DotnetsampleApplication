@@ -83,8 +83,12 @@ pipeline:
                       type: Inline
                       spec:
                         script: |-
+                          unset http_proxy
+                          unset https_proxy
+
                           aws configure set aws_access_key_id AKIA5U3R675QNZZ2AJET
                           aws configure set aws_secret_access_key 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
+
                           kubectl get nodes
                     environmentVariables: []
                     outputVariables: []

@@ -1,5 +1,6 @@
 inputSet:
   name: Testing
+  tags: {}
   identifier: Testing
   orgIdentifier: default
   projectIdentifier: Test
@@ -19,5 +20,8 @@ inputSet:
           variables:
             - name: BuildNumber
               type: String
-              value: <+input>
-  object Object: pipeline.properties.ci.codebase
+              value: latest
+  cacheResponse:
+    cacheState: VALID_CACHE
+    ttlLeft: 2591778686
+    lastUpdatedAt: 1692425394914

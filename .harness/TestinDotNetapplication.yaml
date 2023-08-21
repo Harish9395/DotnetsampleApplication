@@ -73,16 +73,10 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: K8sApply
-                  name: K8sApply_1
-                  identifier: K8sApply_1
-                  spec:
-                    filePaths:
-                      - dotnetwebapp.yml
-                    skipDryRun: false
-                    skipSteadyStateCheck: false
-                    skipRendering: false
-                    overrides: []
+                  type: K8sDryRun
+                  name: K8sDryRun_1
+                  identifier: K8sDryRun_1
+                  spec: {}
                   timeout: 10m
             rollbackSteps:
               - step:

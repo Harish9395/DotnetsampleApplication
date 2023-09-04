@@ -73,16 +73,24 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: K8sApply
-                  name: K8sApply_1
-                  identifier: K8sApply_1
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
                   spec:
-                    filePaths:
-                      - dotnetwebapp.yml
-                    skipDryRun: false
-                    skipSteadyStateCheck: false
-                    skipRendering: false
-                    overrides: []
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: "curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.13.7/2019-06-11/bin/linux/amd64/aws-iam-authenticator\r\nchmod +x ./aws-iam-authenticator\r\nmkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$HOME/bin:$PATH\r\necho 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  type: K8sDryRun
+                  name: K8sDryRun_1
+                  identifier: K8sDryRun_1
+                  spec: {}
                   timeout: 10m
             rollbackSteps:
               - step:
